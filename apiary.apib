@@ -1,0 +1,138 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# RPG multijugador
+
+RPG Database
+
+
+## Users [/users/{id}]
+
+### Retrieves a player's data with the score [GET]
+
++ Response 200 (application/json)
+
+        {
+            "name": "boquetes",
+            "lvl": 1
+            "score": 25
+        }
+        
+### Stores player's lvl up [POST]
+
++ Request (application/json)
+
+        {
+            "lvl": 2
+        }
+
++ Response 200
+
+## Unlock a new character [/profile/{id}]
+
+### Retrieves the characters the player unlocked for leveling up [POST]
+
++ Request 200 (application/json)
+
+        {
+            "charactersUnlocked": "names" : ["dep2"]
+        }
+
++ Response 200
+
+### Retrives page with the profile information [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 01,
+                "name": "dep",
+                "lvl": 3,
+                "score" : 800,
+                "characters": ["dep1" , "dep2"],
+                "team": ["dep1", "dep2"],
+                "charactersUnlocked" : ["dep1", "dep2", "dep3"]
+            },
+            {
+                "id": 02,
+                "name": "jaramiyolo",
+                "lvl": 5,
+                "score" : 1500,
+                "characters": ["dep1" , "dep2", "dep3", "dep4"],
+                "team": ["dep1", "dep2", "dep4"],
+                "charactersUnlocked" : ["dep1", "dep2", "dep3", "dep4", "dep5"]
+            },
+            {
+                "id": 03,
+                "name": "boquetes",
+                "lvl": 2,
+                "score" : 45,
+                "characters": ["dep1"],
+                "team": ["dep1"],
+                "charactersUnlocked" : ["dep1", "dep2"]
+            }
+        ]
+        
+## Player´s team [/profile/{id}/team]
+
+### Retrives the player´s team [GET]
+
++ Response 200 (application/json)
+
+        {
+            "team" : ["dep1", "dep2", "dep4"]
+        } 
+    
+### Stores the new player´s team [POST]
+
++ Request 200 (application/json)
+
+        {
+            "team" : ["dep1", "dep2", "dep3"]
+        }
+
++ Response 200
+        
+## Character´s upgrade stats [/profile/{id}/characters/stats]
+
+###  Stores the upgraded stats the player spend [POST]
+
++ Request 200 (application/json)
+
+        {
+            "especialidad" : 2
+        }
+
++ Response 200
+
+### Retrives the player´s stats  [GET]
+
++ Response 200 (application/json)
+
+        {
+            "especialidad" : 2,
+            "activa" : 1,
+            "pasiva" : 1
+        }
+        
+## Stores the score after a match [/profile/{id}/score]
+
+### Retrives the players score [GET]        
+
++ Response 200 (application/json)
+        
+        {
+            "name" : "dep",
+            "score" : 800
+        }
+    
+### Stores player´s new score [POST]
+
++ Request 200 (application/json)
+
+        {
+            "score" : 900
+        }
+        
++ Response 200
