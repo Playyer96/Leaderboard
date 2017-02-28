@@ -50,27 +50,27 @@ RPG Database
                 "name": "dep",
                 "lvl": 3,
                 "score" : 800,
-                "characters": ["dep1" , "dep2"],
-                "team": ["dep1", "dep2"],
-                "charactersUnlocked" : ["dep1", "dep2", "dep3"]
+                "characters": ["Grougal" , "Samantha"],
+                "team": ["Grougal" , "Samantha"],
+                "charactersUnlocked" : ["Grougal" , "Samantha", "Nefarian"]
             },
             {
                 "id": 02,
                 "name": "jaramiyolo",
                 "lvl": 5,
                 "score" : 1500,
-                "characters": ["dep1" , "dep2", "dep3", "dep4"],
-                "team": ["dep1", "dep2", "dep4"],
-                "charactersUnlocked" : ["dep1", "dep2", "dep3", "dep4", "dep5"]
+                "characters": ["Grougal" , "Samantha", "dep4"],
+                "team": ["Grougal" , "Samantha", "dep4"],
+                "charactersUnlocked" : ["Grougal" , "Samantha", "Nefarian", "dep4", "dep5"]
             },
             {
                 "id": 03,
                 "name": "boquetes",
                 "lvl": 2,
                 "score" : 45,
-                "characters": ["dep1"],
-                "team": ["dep1"],
-                "charactersUnlocked" : ["dep1", "dep2"]
+                "characters": ["Grougal" ],
+                "team": ["Grougal" ],
+                "charactersUnlocked" : ["Grougal" , "Samantha"]
             }
         ]
         
@@ -81,7 +81,7 @@ RPG Database
 + Response 200 (application/json)
 
         {
-            "team" : ["dep1", "dep2", "dep4"]
+            "team" : ["Grougal" , "Samantha", "dep4"]
         } 
     
 ### Stores the new player´s team [POST]
@@ -89,9 +89,29 @@ RPG Database
 + Request 200 (application/json)
 
         {
-            "team" : ["dep1", "dep2", "dep3"]
+            "team" : ["Grougal" , "Samantha", "Nefarian"]
         }
 
++ Response 200
+
+## Character lvl [/profile/{id}{?characters}]
+
+### Retrives a specific character´s lvl [GET]
+
++ Response 200 (application/json)
+
+        {
+            "characterLvl" : 3
+        }
+        
+### Stores the character´s lvl up [POST]
+
++ Request 200 (application/json)
+
+        {
+            "characterLvl" : 4
+        }
+    
 + Response 200
         
 ## Character´s upgrade stats [/profile/{id}/characters/stats]
@@ -101,7 +121,7 @@ RPG Database
 + Request 200 (application/json)
 
         {
-            "especialidad" : 2
+            "ataque" : 4
         }
 
 + Response 200
@@ -111,9 +131,12 @@ RPG Database
 + Response 200 (application/json)
 
         {
-            "especialidad" : 2,
-            "activa" : 1,
-            "pasiva" : 1
+           "vida" : 3
+           "ataque" : 4
+           "Defensa" : 2
+           "AtaqueEspecial" : 1 
+           "DefensaEspecial" : 1
+           "Elemento" : 2
         }
         
 ## Stores the score after a match [/profile/{id}/score]
